@@ -1,0 +1,17 @@
+version: 1.0.{build}
+image: Ubuntu
+install:
+- sh: autoreconf -ivf
+build_script:
+- sh: >-
+    cd /home/appveyor/projects/ssocks-linux
+
+    bash ./bootstrap.sh
+
+    bash ./configure && make
+artifacts:
+- path: ./src/nsocks
+- path: ./src/rcsocks
+- path: ./src/rssocks
+- path: ./src/ssocks
+- path: ./src/ssocksd
